@@ -4,8 +4,8 @@ In light of the coronavirus crisis, touchless interaction has become the focus o
 
 This repository is meant to be built and run on Ideum's hardware systems that include a touch table with 4k screen, a Leap Motion device, 3.5” display, and LED lights.
 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/apu0_l-zF6g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Preview Video:
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/apu0_l-zF6g/0.jpg)](https://www.youtube.com/watch?v=apu0_l-zF6g)
 
 ## Repository Layout
 
