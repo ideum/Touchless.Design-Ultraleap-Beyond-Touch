@@ -4,7 +4,7 @@ In light of the coronavirus crisis, touchless interaction has become the focus o
 
 This repository is meant to be built and run on Ideum's hardware systems that include a touch table with 4k screen, a Leap Motion device, 3.5” display, and LED lights. 
 
-Disclaimer: This software was designed and built to run on UHD displays (3840x2160). Running on any other display may result in scaling issues.
+<b>Disclaimer: This software was designed and built to run on UHD displays (3840x2160). Running on any other display may result in scaling issues.</b>
 
 Preview Video:
 
