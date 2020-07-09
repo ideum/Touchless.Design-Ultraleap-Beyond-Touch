@@ -1,4 +1,12 @@
-﻿using DG.Tweening;
+﻿/** This application is intended to be the main UI feedback mechanism for the Integrated Touchless System. When used with a client
+ * application that integrates with the System, this application will change to show hover states, selection states, and no touch 
+ * warning states.
+ * 
+ * When built, the app is windowless and replaces the Windows cursor with a cursor that animates, and changes color to provide both 
+ * onboarding information and dynamic feedback.
+**/
+
+using DG.Tweening;
 using Ideum.Data;
 using UnityEngine;
 
@@ -15,12 +23,14 @@ namespace Ideum {
     private Sequence _seq;
     bool _touchWarningActive = false;
 
+    // Initialize the TouchlessDesign and path directory to Service and subscribe to OnConnect and OnDisconnect events.
     void Start() {
       TouchlessDesign.Initialize(AppSettings.Get().DataDirectory.GetPath());
       TouchlessDesign.Connected += OnConnected;
       TouchlessDesign.Disconnected += OnDisconnected;
     }
 
+    // Deinitialize TouchlessDesign
     void OnApplicationQuit() {
       TouchlessDesign.DeInitialize();
     }
@@ -36,6 +46,7 @@ namespace Ideum {
       _connected = true;
     }
 
+    // At a regular interval, query the click and hover states, as well as the no touch state, passing respective method delegates.
     private void Update() {
       if (_connected) {
         _timer += Time.deltaTime;
@@ -47,6 +58,8 @@ namespace Ideum {
       }
     }
 
+    // Method delegate to handle TouchlessDesign response to QueryNoTouchState. This will prompt the cursor to change its state as well
+    // as animate the red warning background.
     private void HandleNoTouch(bool noTouch) {
       if (noTouch) {
         Cursor.ShowNoTouch();
@@ -67,6 +80,7 @@ namespace Ideum {
       }
     }
 
+    // Method delegate to handle TouchlessDesign response to QueryClickAndHoverState. Passes both values on to the cursor.
     private void HandleQueryResponse(bool clickState, HoverStates hoverState) {
       Cursor.DoStateChange(hoverState, clickState);
     }

@@ -1,4 +1,9 @@
-﻿using System;
+﻿/** This application is inteded to be a supplementary feedback mechanism for the Integrated Touchless System. It is intended
+ * to run on a small 3.5" display attached to the Ideum touch table and shows dynamic gesture information and onboarding instructions
+ * to users.
+ **/
+
+using System;
 using Ideum;
 using Ideum.Data;
 using System.IO;
@@ -14,6 +19,7 @@ public class App : MonoBehaviour {
   public UIController UIController;
   public RectTransform Scalar;
 
+  // Sets the screen to whatever is specified in the settings file. Initialize the TouchlessDesign and path directory to Service and subscribe to OnConnect and OnDisconnect events.
   void Awake() {
     int screen = 0;
     try {
@@ -50,6 +56,7 @@ public class App : MonoBehaviour {
     TouchlessDesign.Disconnected += OnDisconnected;
   }
 
+  // Deinitialize TouchlessDesign
   void OnApplicationQuit() {
     TouchlessDesign.DeInitialize();
   }
@@ -59,12 +66,14 @@ public class App : MonoBehaviour {
     _connected = false;
   }
 
+  // Query addon information once a connection is made with the Intergrated Touchless System.
   private void OnConnected() {
     Log.Info("Connected. Starting to query...");
     _connected = true;
     TouchlessDesign.QueryAddOn(HandleAddOnQuery);
   }
 
+  // Response to the addon information query. Scales the application to fit the pixel ratio of the screen.
   private void HandleAddOnQuery(bool hasScreen, bool hasLEDs, int width_px, int height_px, int width_mm, int height_mm) {
     Log.Info($"{hasScreen}, {hasLEDs}, {width_px}, {height_px}, {width_mm}, {height_mm}");
     if (!hasScreen) return;
@@ -72,6 +81,7 @@ public class App : MonoBehaviour {
     Scalar.localScale = new Vector2(scaledX, Scalar.localScale.y);
   }
 
+  // At a regular interval, query the click and hover states, as well as the no touch state, passing respective method delegates.
   private void Update() {
     if (_connected) {
       _timer += Time.deltaTime;
@@ -83,10 +93,12 @@ public class App : MonoBehaviour {
     }
   }
 
+  // Method delegate to handle TouchlessDesign response to QueryNoTouchState.
   private void HandleNoTouchState(bool noTouch) {
     UIController.NoTouchWarning(noTouch);
   }
 
+  // Method delegate to handle TouchlessDesign response to QueryClickAndHoverState.
   private void HandleQueryResponse(bool clickState, HoverStates hoverState) {
     UIController.DoStateChange(hoverState, clickState);
   }
