@@ -15,7 +15,7 @@ In the src directory is all of the source code for the Integrated Touchless Syst
 
 This is the core of the Integrated Touchless System. It operates as a Windows service and is responsible for integrating the Leap Motion SDK, controlling the mouse, setting the color of the attached LEDs, managing the Overlay and Addon applications, and communicating with any client applications. Certain settings such as gesture toggles can be configured via a system tray icon as shown below. Other options can be configured by editing the configuration json files in the Integrated Touchless System's root directory. This is explained in greater depth [here](#Settings).
 
-!["System Tray Icon"](/docs/images/system_tray.png)
+!["System Tray Icon"](/docs/images/system_tray.PNG)
 
 ### Overlay
 
@@ -34,7 +34,7 @@ When interacting with a client application that is connected to the Integrated T
 
 The AddOn application is designed for a secondary monitor that comes embedded in some of our systems. This application provides further feedback and onboarding information to supplement the Overlay cursor as users interact with the Integrated Touchless System. When enabled, the System will automatically manage and communicate with the AddOn application. In addition to the animated hand icon, the AddOn application also shows text feedback.
 
-!["AddOn"](/docs/images/addon.png)
+!["AddOn"](/docs/images/addon.PNG)
 
 ### Asset Package
 
