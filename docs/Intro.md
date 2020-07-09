@@ -13,7 +13,7 @@ In the src directory is all of the source code for the Integrated Touchless Syst
 
 ### Service
 
-This is the core of the Integrated Touchless System. It operates as a Windows service and is responsible for integrating the Leap Motion SDK, controlling the mouse, setting the color of the attached LEDs, managing the Overlay and Addon applications, and communicating with any client applications. Certain settings such as gesture toggles can be configured via a system tray icon as shown below. Other options can be configured by editing the configuration json files in the Integrated Touchless System's root directory. This is explained in greater depth HERE.
+This is the core of the Integrated Touchless System. It operates as a Windows service and is responsible for integrating the Leap Motion SDK, controlling the mouse, setting the color of the attached LEDs, managing the Overlay and Addon applications, and communicating with any client applications. Certain settings such as gesture toggles can be configured via a system tray icon as shown below. Other options can be configured by editing the configuration json files in the Integrated Touchless System's root directory. This is explained in greater depth [here](#Settings).
 
 !["System Tray Icon"](./images/system_tray.png)
 
@@ -38,11 +38,11 @@ The AddOn application is designed for a secondary monitor that comes embedded in
 
 ### Asset Package
 
-The Unity asset package, "TouchlessDesign.unitypackage", can be imported into a Unity Engine project and used to integrate that project application with the Integrated Touchless System. More detailed instructions for this can be found HERE.
+The Unity asset package, "TouchlessDesign.unitypackage", can be imported into a Unity Engine project and used to integrate that project application with the Integrated Touchless System. More detailed instructions for this can be found [here](#Adding-Support-to-a-Custom-Application).
 
 ### Example
 
-The Example application is a demo client application that uses the Unity asset package to integrate with the Integrated Touchless System. Instructions on building and running the application can be found HERE.
+The Example application is a demo client application that uses the Unity asset package to integrate with the Integrated Touchless System.
 
 ### Ideum.Logging
 
