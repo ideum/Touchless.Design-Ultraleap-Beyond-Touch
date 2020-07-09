@@ -97,9 +97,6 @@ namespace TouchlessDesign {
       Controller.DimLights.AddChangedListener(HandleDimLightsChanged);
     }
 
-
-
-
     private void DeInitializeNotificationArea() {
       _notify.Visible = false;
       _icon?.Dispose();
