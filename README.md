@@ -47,7 +47,7 @@ The Example application is a demo client application that uses the Unity asset p
 
 ### Ideum.Logging
 
-Do we need to explain this?
+This is a logging abstraction we use in Unity and is included in all of the Unity projects, but we've included the source code here for posterity.
 
 ## Deployment
 
@@ -55,7 +55,7 @@ Do we need to explain this?
 
 #### Building:
 
-In order to build the core of the Integrated Touchless System, open the TouchlessDesign.sln file in Visual Studio, right-click the Solution and select "Build Solution." We have included build instructions that will build the solution at the following path on your system: "C:/Users/#USER/AppData/Roaming/Ideum". 
+In order to build the core of the Integrated Touchless System, open the TouchlessDesign.sln file in Visual Studio, right-click the Solution and select "Build Solution." We have included build instructions that will build the solution at the following path on your system: "%appdata%/Ideum". 
 
 #### Running:
 
@@ -77,8 +77,8 @@ In the TouchlessDesignService directoy are a number of configuration json files 
 2. Open the application in Unity, and go to File-> Build Settings.
 3. Make sure the _App/Scenes/App Scene is checked and press Build.
 4. In order for the Integrated Touchless System to find and run either of the peripheral applications, they should be built at the following respective paths:
-  - "C:/Users/#User/AppData/Roaming/Ideum/TouchlessDesignService/bin/AddOn/"
-  - "C:/Users/#User/AppData/Roaming/Ideum/TouchlessDesignService/bin/Overlay/"
+  - "%appdata%/Ideum/TouchlessDesignService/bin/AddOn/"
+  - "%appdata%/Ideum/TouchlessDesignService/bin/Overlay/"
 5. In the TouchlessDesignService directory, open the ui.json file and make sure the paths to the two applications are included in the ApplicationPaths field.
 
 Now, when you run the Integrated Touchless System, it will automatically start up the applications specified in the ui.json file. Likewise, when the System is exited, it will terminate those same applications. Note: These applications will only provide gesture feedback when running alongside a client application that uses the Integrated Touchless System bindings, such as the Example application.
