@@ -15,12 +15,13 @@ public class App : MonoBehaviour {
   public RectTransform Scalar;
 
   void Awake() {
+    int screen = 0;
     try {
       var path = Path.Combine(Application.streamingAssetsPath, "settings.json");
       if (File.Exists(path)) {
         var json = File.ReadAllText(path);
         var obj = JObject.Parse(json);
-        if (int.TryParse(obj["ScreenNumber"].ToString(), out var screen)) {
+        if (int.TryParse(obj["ScreenNumber"].ToString(), out screen)) {
           Log.Info("Screen set to " + screen);
         }
       }
@@ -32,9 +33,9 @@ public class App : MonoBehaviour {
 #if !UNITY_EDITOR
         if(Display.displays.Length > 1)
         {
-            PlayerPrefs.SetInt("UnitySelectMonitor", ScreenNumber);
+            PlayerPrefs.SetInt("UnitySelectMonitor", screen);
 
-            var display = Display.displays[ScreenNumber];
+            var display = Display.displays[screen];
             int w = display.systemWidth;
             int h = display.systemHeight;
             Screen.SetResolution(w, h, true);
