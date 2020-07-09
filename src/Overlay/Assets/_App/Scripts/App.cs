@@ -1,14 +1,19 @@
-﻿using Ideum.Data;
+﻿using DG.Tweening;
+using Ideum.Data;
 using UnityEngine;
 
 namespace Ideum {
   public class App : MonoBehaviour {
 
     public Cursor Cursor;
+    public CanvasGroup WarningBackground;
 
     private bool _connected;
     private float _queryInterval = 0.25f;
     private float _timer;
+
+    private Sequence _seq;
+    bool _touchWarningActive = false;
 
     void Start() {
       TouchlessDesign.Initialize(AppSettings.Get().DataDirectory.GetPath());
@@ -45,7 +50,21 @@ namespace Ideum {
     private void HandleNoTouch(bool noTouch) {
       if (noTouch) {
         Cursor.ShowNoTouch();
-      } 
+      }
+
+      if (!noTouch && _touchWarningActive) {
+        _touchWarningActive = false;
+        _seq?.Kill();
+        _seq = DOTween.Sequence();
+        _seq.Append(WarningBackground.DOFade(0.0f, 0.5f));
+      } else if (noTouch && !_touchWarningActive) {
+        Debug.Log("NO TOUCH: " + noTouch);
+        _touchWarningActive = true;
+        _seq?.Kill();
+        _seq = DOTween.Sequence();
+
+        _seq.Append(WarningBackground.DOFade(1.0f, 0.5f));
+      }
     }
 
     private void HandleQueryResponse(bool clickState, HoverStates hoverState) {
