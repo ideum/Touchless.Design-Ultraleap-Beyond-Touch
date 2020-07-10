@@ -15,9 +15,6 @@ public class HandCursor : Cursor {
   public float SizeHover = 180f;
   public float SizeShrink = 150f;
 
-  //public float BorderWidthFull = 8f;
-  //public float BorderWidthSmall = 3f;
-
   public float BorderWidthFull = 24f;
   public float BorderWidthSmall = 9f;
 
