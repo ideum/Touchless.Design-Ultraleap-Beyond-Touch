@@ -1,18 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Ideum.Data;
 using UnityEngine;
 
-public class App : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+namespace Ideum {
+  
+  public class App : MonoBehaviour {
+
+    public Panel[] Panels;
+    public ItemData[] Items;
+
+    private ItemData _selectedItem;
+
+    public ItemData SelectedItem {
+      get { return _selectedItem; }
+      set {
+        LastSelectedItem = _selectedItem;
+        _selectedItem = value;
+        foreach (var panel in Panels) {
+          panel.AppChangedSelection(value);
+        }
+      }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public ItemData LastSelectedItem { get; private set; }
+
+    void Start() {
+      foreach (var panel in Panels) {
+        panel.App = this;
+        panel.Init();
+      }
+      TouchlessDesign.Initialize(AppSettings.Get().DataDirectory.GetPath());
     }
+
+    void OnApplicationQuit() {
+      TouchlessDesign.DeInitialize();
+    }
+  }
 }
