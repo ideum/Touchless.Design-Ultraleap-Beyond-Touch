@@ -17,6 +17,8 @@ namespace Ideum {
     private Tween _tween;
 
     public override void Init() {
+      CanvasGroup.blocksRaycasts = false;
+      CanvasGroup.interactable = false;
     }
 
     public override void AppChangedSelection(ItemData selection) {
@@ -30,8 +32,12 @@ namespace Ideum {
 
         if (App.LastSelectedItem != null) {
           s.Append(CanvasGroup.DOFade(0f, 0.25f));
+          CanvasGroup.blocksRaycasts = false;
+          CanvasGroup.interactable = false;
         }
         s.AppendCallback(() => {
+          CanvasGroup.blocksRaycasts = true;
+          CanvasGroup.interactable = true;
           DescScroller.normalizedPosition = new Vector2(0,1);
           Name.SetText(selection.name);
           Desc.SetText(selection.Desc);
