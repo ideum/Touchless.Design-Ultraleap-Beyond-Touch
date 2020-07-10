@@ -63,6 +63,8 @@ In order to build the core of the Integrated Touchless System, open the Touchles
 
 Navigate to the build directory (see above), open "TouchlessDesignService/bin/Service/", and run the TouchlessDesignService.exe. In the AddOn or Overlay applications have been built and configured, they will also be launched and the mouse should immediately begin reacting to the Leap Motion controller. An icon will appear in the system tray and exposes a number of options, including the ability to toggle on or off the mouse emulation. The System can also be terminated from this icon, which will likewise close the AddOn and Overlay applications if they are running.
 
+<b>Note: Ctrl+Alt+I will toggle mouse emulation on/off </b>
+
 #### Settings:
 
 In the TouchlessDesignService directoy are a number of configuration json files that can be used to adjust certain aspects of the Integrated Touchless System.
