@@ -12,6 +12,8 @@ namespace Ideum {
       public Transform Origin, Zeus, Athena, Hercules;
     }
 
+    public float rotationSensativityX = 5f;
+    public float rotationSensativityY = 10f;
     public TouchlessDragSurface Surface;
     public Camera Camera;
     public StageItemModel ZeusModel, AthenaModel, HerculesModel;
@@ -43,24 +45,34 @@ namespace Ideum {
       Surface.gameObject.SetActive(false);
       Surface.Dragging += Surface_Dragging;
     }
-    
+
+    float rotX;
+    float rotY;
     private void Surface_Dragging() {
       if (App.SelectedItem == null) return;
       var m = App.SelectedItem.Model;
       var delta = Surface.CurrentDelta;
 
-      var xNorm = delta.x / 3840f;
-      var yNorm = delta.y / 2160f;
+      rotX += delta.y / rotationSensativityX;
+      rotY += -delta.x / rotationSensativityY;
 
-      //Acts weird at 90 and -90 degrees
-      var rotX = m.Pivot.transform.localEulerAngles.x + yNorm * 360;
       rotX = KeepInCheck(rotX);
-
-      //Works
-      var rotY = m.Pivot.transform.localEulerAngles.y + -xNorm*360;
       rotY = KeepInCheck(rotY);
 
       m.Pivot.transform.localEulerAngles = new Vector3(rotX, rotY, 0);
+
+      //var xNorm = delta.x / 3840f;
+      //var yNorm = delta.y / 2160f;
+
+      ////Acts weird at 90 and -90 degrees
+      //var rotX = m.Pivot.transform.localEulerAngles.x + yNorm * 360;
+      ////rotX = KeepInCheck(rotX);
+
+      ////Works
+      //var rotY = m.Pivot.transform.localEulerAngles.y + -xNorm*360;
+      //rotY = KeepInCheck(rotY);
+
+      //m.Pivot.transform.localEulerAngles = new Vector3(rotX, rotY, 0);
     }
 
     private float KeepInCheck(float rotX)
