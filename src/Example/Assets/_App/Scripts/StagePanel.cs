@@ -60,19 +60,6 @@ namespace Ideum {
       rotY = KeepInCheck(rotY);
 
       m.Pivot.transform.localEulerAngles = new Vector3(rotX, rotY, 0);
-
-      //var xNorm = delta.x / 3840f;
-      //var yNorm = delta.y / 2160f;
-
-      ////Acts weird at 90 and -90 degrees
-      //var rotX = m.Pivot.transform.localEulerAngles.x + yNorm * 360;
-      ////rotX = KeepInCheck(rotX);
-
-      ////Works
-      //var rotY = m.Pivot.transform.localEulerAngles.y + -xNorm*360;
-      //rotY = KeepInCheck(rotY);
-
-      //m.Pivot.transform.localEulerAngles = new Vector3(rotX, rotY, 0);
     }
 
     private float KeepInCheck(float rotX)
@@ -84,11 +71,13 @@ namespace Ideum {
     }
 
     public override void AppChangedSelection(ItemData selection) {
+      //reset rotation on new selection
+      rotX = 0;
+      rotY = 0;
+
       if (selection == null) {
         zoomedOut = true;
         Surface.gameObject.SetActive(false);
-        //Camera.transform.DOMove(CameraAnchors.Origin.position, 0.5f);
-        //Camera.transform.position = CameraAnchors.Origin.position;
         foreach (var m in _models) {
           //transition current bust back to og position
           if(m == lastModel)
@@ -113,8 +102,6 @@ namespace Ideum {
       else {
         Surface.gameObject.SetActive(true);
         if (_cameraAnchorMap.TryGetValue(selection.Model, out var a)) {
-          //Camera.transform.DOMove(a.position, 0.8f);
-          //Camera.transform.position = a.position;
           lastModel = selection.Model;
           foreach (var m in _models) {
             m.gameObject.SetActive(m == selection.Model);
