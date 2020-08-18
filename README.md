@@ -1,10 +1,12 @@
 # Touchless.Design-Ultraleap-Beyond-Touch
 
+**_The most up to date version of this project can be found [here](https://github.com/ideum/Touchless.Design-SDK). All future updates will be pushed to the new repository._**
+
 In light of the coronavirus crisis, touchless interaction has become the focus of many public spaces when thinking about technology. Using the Leap Motion camera and SDK, our Integrated Touchless System allows users to interact with our tables and exhibits with no physical touch. This system tracks the users hand and watches for open and close gestures to give complete control over the mouse. Alongside this system are two additional applications: a dynamic cursor overlay and a secondary screen addon. These are meant to provide both feedback and onboarding information to the user with changing colors, gesture demonstrations, and interaction information when hovering over buttons or drag areas. This repository also includes a unity asset package that allows users to integrate support for the system into their own applications, and a demo application for reference. The core system is built in .Net Framework 4.6.1 and the peripheral applications are built in the Unity Game Engine. 
 
 This repository is meant to be built and run on Ideum's hardware systems that include a touch table with 4k screen, a Leap Motion device, 3.5” display, and LED lights. 
 
-<b>Disclaimer: This software was designed and built to run on UHD displays (3840x2160). Running on any other display may result in scaling issues.</b>
+_Disclaimer: This software was designed and built to run on UHD displays (3840x2160). Running on any other display may result in scaling issues._
 
 Preview Video:
 
