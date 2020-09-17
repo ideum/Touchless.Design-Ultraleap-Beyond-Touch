@@ -13,6 +13,7 @@ namespace Ideum {
     public void Select(bool isSelected) {
       _seq?.Kill();
       var s = _seq = DOTween.Sequence();
+      Button.interactable = false;
       if (isSelected) {
         s.Insert(0.00f, SelectGroup.DOFade(0f, 0.25f));
         s.Insert(0.25f, GoBackGroup.DOFade(1f, 0.25f));
@@ -23,6 +24,7 @@ namespace Ideum {
         s.Insert(0.00f, GlowGroup.DOFade(0f, 0.25f));
         s.Insert(0.25f, SelectGroup.DOFade(1f, 0.25f));
       }
+      s.OnComplete(() => Button.interactable = true);
     }
   }
 }
